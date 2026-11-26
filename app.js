@@ -16,10 +16,25 @@ const map = L.map("map", {
 
 L.control.zoom({ position: "topright" }).addTo(map);
 
-L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+const isLocalFile = window.location.protocol === "file:";
+const baseMap = isLocalFile
+  ? {
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+      attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+      credit: "Tiles © Esri（本機備援底圖）",
+    }
+  : {
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      credit: "© OpenStreetMap contributors",
+    };
+
+L.tileLayer(baseMap.url, {
   maxZoom: 19,
-  attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+  attribution: baseMap.attribution,
 }).addTo(map);
+
+document.getElementById("baseMapCredit").textContent = baseMap.credit;
 
 const ElevationLayer = L.GridLayer.extend({
   createTile(coords, done) {

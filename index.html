@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="互動式全球海平面變化情境地圖" />
     <title>海平面變化地圖</title>
+    <link rel="preconnect" href="https://tile.openstreetmap.org" />
     <link rel="preconnect" href="https://server.arcgisonline.com" />
     <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" />
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
@@ -93,7 +94,7 @@
       <p>地圖將公開數值高程模型（DEM）與所選海平面比較。正值顯示高程低於門檻的陸地；負值顯示現今海平面下、可能曾曝露的區域。</p>
       <p>結果未納入堤防、潮汐、風暴潮、河川、地下排水、地層下陷或水體連通性，因此<strong>不能作為防災、工程或不動產判斷依據</strong>。</p>
       <dl>
-        <div><dt>底圖</dt><dd>Tiles © Esri</dd></div>
+        <div><dt>底圖</dt><dd id="baseMapCredit">© OpenStreetMap contributors</dd></div>
         <div><dt>高程</dt><dd>Mapzen / AWS Terrain Tiles</dd></div>
       </dl>
     </dialog>
