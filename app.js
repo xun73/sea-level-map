@@ -177,7 +177,7 @@ function updateLevelInterface(level, label, activeButton = null) {
 
 function selectScenario(button) {
   clearTimeout(sliderTimer);
-  updateLevelInterface(Number(button.dataset.level), button.dataset.label, button);
+  updateLevelInterface(Number(button.dataset.level), button.dataset.description || button.dataset.label, button);
   updateLayer();
 }
 
@@ -191,7 +191,11 @@ levelSlider.addEventListener("input", () => {
   const matchingPreset = [...document.querySelectorAll(".scenario")].find(
     (button) => Number(button.dataset.level) === level,
   );
-  updateLevelInterface(level, matchingPreset?.dataset.label || "自訂海平面高度", matchingPreset || null);
+  updateLevelInterface(
+    level,
+    matchingPreset?.dataset.description || "自訂地形門檻高度；此數值不是 SSP 氣候模型輸出。",
+    matchingPreset || null,
+  );
   clearTimeout(sliderTimer);
   sliderTimer = setTimeout(updateLayer, 180);
 });

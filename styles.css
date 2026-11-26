@@ -78,7 +78,16 @@ button { font: inherit; }
 .level-readout > span:first-child { font-size: 30px; }
 .level-readout strong { font-size: 62px; line-height: .95; font-weight: 500; letter-spacing: -.04em; }
 .level-readout .unit { margin-left: 8px; font: 700 17px/1 system-ui; }
-.scenario-description { min-height: 22px; margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+.scenario-description {
+  height: 96px;
+  margin: 10px 0 0;
+  padding-right: 4px;
+  overflow-y: auto;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  scrollbar-gutter: stable;
+}
 
 .level-slider-wrap { margin-top: 18px; }
 .level-slider-wrap label { display: block; margin-bottom: 9px; color: var(--ink); font-size: 11px; font-weight: 700; }
@@ -141,7 +150,9 @@ button { font: inherit; }
 .scenario:hover { background: rgba(8,127,156,.08); transform: translateX(2px); }
 .scenario.active { color: white; background: var(--ink); }
 .scenario-value { font-family: Georgia, serif; font-size: 17px; font-weight: 700; }
-.scenario-name { font-size: 13px; }
+.scenario-name { font-size: 13px; line-height: 1.25; }
+.scenario-name small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; font-weight: 600; }
+.scenario.active .scenario-name small { color: rgba(255,255,255,.62); }
 
 .legend { display: flex; gap: 20px; padding: 14px 22px 18px; color: var(--muted); border-top: 1px solid var(--line); font-size: 11px; }
 .legend span { display: flex; align-items: center; gap: 7px; }
@@ -167,15 +178,34 @@ button { font: inherit; }
 .coordinates { right: 24px; padding: 9px 13px; color: var(--muted); font: 600 10px/1 system-ui; letter-spacing: .04em; }
 @keyframes pulse { 50% { opacity: .35; } }
 
-.about-dialog { width: min(520px, calc(100% - 32px)); padding: 32px; color: var(--ink); border: 0; border-radius: 18px; box-shadow: var(--shadow); }
+.about-dialog { width: min(920px, calc(100% - 32px)); max-height: min(88dvh, 900px); padding: 32px; overflow-y: auto; color: var(--ink); border: 0; border-radius: 18px; box-shadow: var(--shadow); }
 .about-dialog::backdrop { background: rgba(12,35,44,.55); backdrop-filter: blur(3px); }
 .about-dialog h2 { margin: 0 0 18px; font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 500; }
+.about-dialog h3 { margin: 0 0 10px; font-size: 17px; }
 .about-dialog p { color: var(--muted); line-height: 1.75; }
 .about-dialog strong { color: var(--ink); }
+.about-dialog a { color: var(--deep-blue); text-underline-offset: 3px; }
+.about-lead { margin-bottom: 24px; font-size: 15px; }
+.about-section { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.about-section p, .about-section li { font-size: 13px; line-height: 1.75; }
+.about-section ul { margin: 10px 0 0; padding-left: 1.35rem; color: var(--muted); }
+.about-section li + li { margin-top: 7px; }
+.scenario-table-wrap { max-width: 100%; margin-top: 16px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.scenario-table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 12px; }
+.scenario-table caption { padding: 11px 13px; color: var(--ink); text-align: left; background: rgba(8,127,156,.07); font-weight: 800; }
+.scenario-table th, .scenario-table td { padding: 10px 12px; text-align: left; vertical-align: middle; border-top: 1px solid var(--line); }
+.scenario-table thead th { color: var(--ink); background: rgba(18,44,56,.05); font-size: 11px; }
+.scenario-table thead small { color: var(--muted); font-weight: 600; }
+.scenario-table tbody th { white-space: nowrap; }
+.scenario-table tbody tr:nth-child(even) { background: rgba(18,44,56,.025); }
+.table-note { margin: 8px 0 0; font-size: 11px !important; }
+.model-limitations { padding: 20px; border: 0; border-radius: 12px; background: rgba(215,168,82,.12); }
+.model-limitations h3 { color: #74500f; }
+.source-section ul { list-style: none; padding-left: 0; }
 .about-dialog dl { margin: 22px 0 0; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
 .about-dialog dl div { display: flex; justify-content: space-between; margin-top: 7px; }
 .about-dialog dd { margin: 0; color: var(--muted); }
-.dialog-close { position: absolute; top: 14px; right: 16px; color: var(--muted); border: 0; background: transparent; font-size: 26px; cursor: pointer; }
+.dialog-close { position: sticky; z-index: 2; top: -18px; float: right; width: 36px; height: 36px; margin: -10px -10px 0 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.94); font-size: 25px; line-height: 1; cursor: pointer; }
 
 @media (max-width: 680px) {
   .app-shell { grid-template-rows: 64px 1fr; }
@@ -189,8 +219,15 @@ button { font: inherit; }
   .scenario-list { display: grid; grid-template-columns: 1fr 1fr; }
   .scenario { grid-template-columns: 56px 1fr; padding: 9px; }
   .scenario-name { font-size: 11px; }
+  .scenario-name small { font-size: 8px; }
   .legend { padding: 11px 18px 14px; }
   .status-card { top: 12px; bottom: auto; }
   .coordinates { display: none; }
   .leaflet-control-zoom { margin-top: 58px !important; margin-right: 12px !important; }
+  .about-dialog { width: calc(100% - 20px); max-height: 92dvh; padding: 22px 18px; border-radius: 14px; }
+  .about-dialog h2 { font-size: 25px; }
+  .about-lead { font-size: 14px; }
+  .about-section { margin-top: 20px; padding-top: 18px; }
+  .model-limitations { padding: 16px; }
+  .dialog-close { top: -14px; margin-right: -6px; }
 }
