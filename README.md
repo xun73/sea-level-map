@@ -29,8 +29,8 @@ python -m http.server 8000
 - +0 m：目前海平面基準
 - +1 m：本世紀末高端示意
 - +5 m：長期暖化承諾示意（約 2,000 年尺度，低信心）
-- +7.4 m：格陵蘭冰蓋完全融化的極端長期假想情境
-- +58 m：南極冰蓋完全融化的極端長期假想情境
+- +7.4 m：格陵蘭冰原完全融化的極端長期假想情境
+- +58 m：南極冰原完全融化的極端長期假想情境
 - +66 m：全球陸地冰完全融化的極端長期假想情境
 - −120 m：末次冰盛期古海平面示意
 
@@ -38,7 +38,7 @@ python -m http.server 8000
 
 正值會標出 DEM 高程大於現今海平面且低於情境高度的像素；負值則標出海平面以下、情境海平面以上的像素。這是海平面高度影響示意，不會計算水體連通性，也未納入堤防、潮汐、風暴潮、河流、排水或地層下陷，不能作為防災或工程依據。
 
-網站內的 IPCC AR6 SSP 表格只提供氣候評估背景；高度滑桿並非與 SSP 連動的氣候模型輸出。溫度投影以 1850–1900 為基準，2100 年全球平均海平面投影以 1995–2014 為基準。
+網站內的 IPCC AR6 SSP 表格只提供氣候評估背景；高度滑桿並非與 SSP 連動的氣候模型輸出。溫度推估以 1850–1900 為基準，2100 年全球平均海平面推估以 1995–2014 為基準。
 
 IPCC AR6 參考：[WGI Summary for Policymakers](https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/)、[WGI Chapter 9](https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-9/)、[Synthesis Report Summary for Policymakers](https://www.ipcc.ch/report/ar6/syr/summary-for-policymakers/)。
 

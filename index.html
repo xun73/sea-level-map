@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://server.arcgisonline.com" />
     <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" />
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
   <body>
     <main class="app-shell">
@@ -41,9 +41,9 @@
             <div class="level-readout">
               <span id="levelSign">+</span><strong id="levelValue">1</strong><span class="unit">m</span>
             </div>
-            <p id="scenarioDescription" class="scenario-description">IPCC AR6 評估的 2100 年全球平均海平面上升範圍，依五種核心 SSP 情境約為 0.28–1.01 m（相較 1995–2014）。+1 m 是方便觀察地形的概略示意值，不代表台灣各地都會上升 1 m。</p>
+            <p id="scenarioDescription" class="scenario-description">IPCC AR6 評估的 2100 年全球平均海平面上升範圍，依五種核心 SSP 情境約為 0.28–1.01 m（相較 1995–2014）。+1 m 是方便觀察地形的概略示意值，不代表臺灣各地都會上升 1 m。</p>
             <div class="level-slider-wrap">
-              <label for="levelSlider" data-i18n="sliderLabel">自訂高度（非氣候預測）</label>
+              <label for="levelSlider" data-i18n="sliderLabel">自訂高度（非氣候推估）</label>
               <input
                 id="levelSlider"
                 class="level-slider"
@@ -65,16 +65,16 @@
               <span class="scenario-value">+0 m</span><span class="scenario-name">目前海平面基準<small>基準</small></span>
             </button>
             <button class="scenario active" type="button" role="radio" aria-checked="true" data-level="1" data-scenario="one">
-              <span class="scenario-value">+1 m</span><span class="scenario-name">本世紀末高端示意<small>本世紀末投影</small></span>
+              <span class="scenario-value">+1 m</span><span class="scenario-name">本世紀末高端示意<small>本世紀末推估</small></span>
             </button>
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="5" data-scenario="five">
               <span class="scenario-value">+5 m</span><span class="scenario-name">長期暖化承諾示意<small>約 2,000 年尺度</small></span>
             </button>
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="7.4" data-scenario="greenland">
-              <span class="scenario-value">+7.4 m</span><span class="scenario-name">格陵蘭冰蓋完全融化<small>極端長期假想情境</small></span>
+              <span class="scenario-value">+7.4 m</span><span class="scenario-name">格陵蘭冰原完全融化<small>極端長期假想情境</small></span>
             </button>
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="58" data-scenario="antarctic">
-              <span class="scenario-value">+58 m</span><span class="scenario-name">南極冰蓋完全融化<small>極端長期假想情境</small></span>
+              <span class="scenario-value">+58 m</span><span class="scenario-name">南極冰原完全融化<small>極端長期假想情境</small></span>
             </button>
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="66" data-scenario="allIce">
               <span class="scenario-value">+66 m</span><span class="scenario-name">全球陸地冰完全融化<small>極端長期假想情境</small></span>
@@ -103,12 +103,12 @@
       <button id="closeAbout" class="dialog-close" type="button" aria-label="關閉" data-i18n-aria="close">×</button>
       <p class="eyebrow" data-i18n="aboutEyebrow">關於模型</p>
       <h2 data-i18n="aboutTitle">海平面高度影響示意圖</h2>
-      <p class="about-lead" data-i18n-html="aboutLead">本網站將數值高程模型（DEM）與使用者設定的海平面高度比較，<strong>不會自行計算氣候變遷，也不會預測未來海平面</strong>。IPCC 資料提供氣候評估背景；左側滑桿並不是與 SSP 情境連動的氣候模型輸出。</p>
+      <p class="about-lead" data-i18n-html="aboutLead">本網站將數值高程模型（DEM）與使用者設定的海平面高度比較，<strong>不會自行計算氣候變遷，也不會推估未來海平面</strong>。IPCC 資料提供氣候評估背景；左側滑桿並不是與 SSP 情境連動的氣候模型輸出。</p>
 
       <section class="about-section">
-        <h3 data-i18n="ipccTitle">IPCC 氣候預測情境</h3>
+        <h3 data-i18n="ipccTitle">IPCC 氣候變遷推估情境</h3>
         <p data-i18n-html="sspIntro"><strong>SSP（共享社會經濟路徑）</strong>描述不同的社會經濟、排放與政策未來，用來探索可能的氣候反應；它們不是對未來的確定預言，也不代表發生機率。</p>
-        <p data-i18n-html="sspNaming">名稱中連字號前的編號代表社會經濟發展路徑；連字號後的數字代表約在 2100 年的輻射強迫水平，單位為 W/m²，<strong>不是升溫幾度，也不是海平面上升幾公尺</strong>。同一 SSP 家族可搭配不同排放與政策路徑，例如 SSP1-1.9 與 SSP1-2.6。下列五項是 AR6 選用的核心示意情境，不是每個 SSP 家族各一條的完整清單。</p>
+        <p data-i18n-html="sspNaming">名稱中連字號前的編號代表社會經濟發展路徑；連字號後的數字代表約在 2100 年的輻射驅動力，單位為 W/m²，<strong>不是升溫幾度，也不是海平面上升幾公尺</strong>。同一 SSP 家族可搭配不同排放與政策路徑，例如 SSP1-1.9 與 SSP1-2.6。下列五項是 AR6 選用的核心示意情境，不是每個 SSP 家族各一條的完整清單。</p>
 
         <div class="scenario-table-wrap" tabindex="0" aria-label="IPCC AR6 核心 SSP 情境比較表，可水平捲動" data-i18n-aria="tableAria">
           <table class="scenario-table">
@@ -116,7 +116,7 @@
             <thead>
               <tr>
                 <th scope="col" data-i18n="scenarioColumn">情境</th>
-                <th scope="col" data-i18n-html="forcingColumn">約 2100 年<br />輻射強迫</th>
+                <th scope="col" data-i18n-html="forcingColumn">約 2100 年<br />輻射驅動力</th>
                 <th scope="col" data-i18n-html="warmingColumn">2081–2100 全球升溫<br /><small>相較 1850–1900</small></th>
                 <th scope="col" data-i18n-html="seaLevelColumn">2100 全球平均海平面上升<br /><small>相較 1995–2014</small></th>
               </tr>
@@ -130,15 +130,15 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note" data-i18n="tableNote">溫度欄為最佳估計（括號內為極可能範圍）；海平面欄為可能範圍。兩者基準期不同，請勿直接混用。</p>
+        <p class="table-note" data-i18n="tableNote">溫度欄為最佳估計（括號內為非常可能範圍）；海平面欄為可能範圍。兩者基準期不同，請勿直接混用。</p>
       </section>
 
       <section class="about-section">
         <h3 data-i18n="understandTitle">如何理解左側高度</h3>
         <ul>
-          <li data-i18n-html="understandOne"><strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是觀察高度影響的概略值，不代表台灣各地的局部變化。</li>
-          <li data-i18n-html="understandFive"><strong>+5 m：</strong>對應 2°C 峰值升溫下、約 2,000 年海平面承諾上升 2–6 m 的長期範圍（低信心），不是 2100 年或特定 SSP 預測。AR6 另指出 SSP5-8.5 下 2150 年接近 5 m 的結果屬於不能排除的低信心高端結果，兩者不可混為同一項預測。</li>
-          <li data-i18n-html="understandIce"><strong>+7.4、+58、+66 m：</strong>冰蓋或全球陸地冰完全融化的全球平均海平面等效高度概估，不表示具體融化路徑或時間。</li>
+          <li data-i18n-html="understandOne"><strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是觀察高度影響的概略值，不代表臺灣各地的局部變化。</li>
+          <li data-i18n-html="understandFive"><strong>+5 m：</strong>對應 2°C 峰值升溫下、約 2,000 年海平面承諾上升 2–6 m 的長期範圍（低信心程度），不是 2100 年或特定 SSP 推估。AR6 另指出 SSP5-8.5 下 2150 年接近 5 m 的結果屬於不能排除的低信心高端結果，兩者不可混為同一項推估。</li>
+          <li data-i18n-html="understandIce"><strong>+7.4、+58、+66 m：</strong>冰原或全球陸地冰完全融化的全球平均海平面等效高度概估，不表示具體融化路徑或時間。</li>
           <li data-i18n-html="understandLgm"><strong>−120 m：</strong>末次冰盛期古海平面示意，不是未來情境。</li>
         </ul>
       </section>
@@ -146,7 +146,7 @@
       <section class="about-section model-limitations">
         <h3 data-i18n="limitationsTitle">地圖模型與限制</h3>
         <p data-i18n-html="limitationsOne">正值標示 DEM 高程高於現今海平面、但低於設定高度的區域；負值標示現今海平面以下、可能曾曝露的區域。這些只是<strong>依地勢高度標示的可能影響區，不等於實際淹水範圍</strong>。</p>
-        <p data-i18n-html="limitationsTwo">模型未納入堤防、潮汐、風暴潮、河川、地下排水、水體連通性及地層升降。冰蓋完全融化的數值是全球平均海平面等效高度概估，不能直接解讀為台灣各地的局部海平面變化。因此結果<strong>不能作為防災、工程或不動產判斷依據</strong>。</p>
+        <p data-i18n-html="limitationsTwo">模型未納入堤防、潮汐、風暴潮、河川、地下排水、水體連通性及地層升降。冰原完全融化的數值是全球平均海平面等效高度概估，不能直接解讀為臺灣各地的局部海平面變化。因此結果<strong>不能作為防災、工程或不動產判斷依據</strong>。</p>
       </section>
 
       <section class="about-section source-section">
@@ -158,6 +158,11 @@
         </ul>
       </section>
 
+      <section class="creator-credit" aria-label="製作者資訊" data-i18n-aria="creatorAria">
+        <p lang="zh-Hant">臺中市立惠文高中地球科學教師吳秉勳製作 / AI協助製作</p>
+        <p lang="en">Made by Bing-Syun Wu, Earth Science Teacher, Hui-Wen Senior High School</p>
+      </section>
+
       <dl>
         <div><dt data-i18n="baseMap">底圖</dt><dd id="baseMapCredit">© OpenStreetMap contributors</dd></div>
         <div><dt data-i18n="elevation">高程</dt><dd>Mapzen / AWS Terrain Tiles</dd></div>
@@ -165,6 +170,6 @@
     </dialog>
 
     <script src="vendor/leaflet/leaflet.js"></script>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=6"></script>
   </body>
 </html>
