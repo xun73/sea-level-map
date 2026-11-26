@@ -193,7 +193,7 @@ levelSlider.addEventListener("input", () => {
   );
   updateLevelInterface(
     level,
-    matchingPreset?.dataset.description || "自訂地形門檻高度；此數值不是 SSP 氣候模型輸出。",
+    matchingPreset?.dataset.description || "自訂海平面比較高度；此數值不是 SSP 氣候模型輸出。",
     matchingPreset || null,
   );
   clearTimeout(sliderTimer);

@@ -58,7 +58,7 @@
             <button class="scenario active" type="button" role="radio" aria-checked="true" data-level="1" data-label="本世紀末高端示意" data-description="IPCC AR6 評估的 2100 年全球平均海平面上升範圍，依五種核心 SSP 情境約為 0.28–1.01 m（相較 1995–2014）。+1 m 是方便觀察地形的概略示意值，不代表台灣各地都會上升 1 m。">
               <span class="scenario-value">+1 m</span><span class="scenario-name">本世紀末高端示意<small>本世紀末投影</small></span>
             </button>
-            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="5" data-label="長期暖化承諾示意" data-description="IPCC AR6 指出，若全球升溫峰值約為 2°C，其後約 2,000 年的全球平均海平面承諾上升約 2–6 m（低信心）。+5 m 是此長期範圍內的地形示意值，不代表特定 SSP 情境或 2100 年預測。">
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="5" data-label="長期暖化承諾示意" data-description="IPCC AR6 指出，若全球升溫峰值約為 2°C，其後約 2,000 年的全球平均海平面承諾上升約 2–6 m（低信心）。+5 m 是此長期範圍內的高度影響示意值，不代表特定 SSP 情境或 2100 年預測。">
               <span class="scenario-value">+5 m</span><span class="scenario-name">長期暖化承諾示意<small>約 2,000 年尺度</small></span>
             </button>
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="7.4" data-label="格陵蘭冰蓋完全融化" data-description="冰蓋完全融化後的全球平均海平面等效高度概估；不表示融化時間，也不是近期或本世紀的預測。">
@@ -70,7 +70,7 @@
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="66" data-label="全球陸地冰完全融化" data-description="全球陸地冰完全融化後的海平面等效高度概估；不代表具體融化路徑、時間或預測結果。">
               <span class="scenario-value">+66 m</span><span class="scenario-name">全球陸地冰完全融化<small>極端長期假想情境</small></span>
             </button>
-            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="-120" data-label="末次冰盛期海平面示意" data-description="海平面比現今低約 120 m 時的古海平面地形示意，用來觀察現今海面下可能露出的地形，不是未來情境。">
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="-120" data-label="末次冰盛期海平面示意" data-description="海平面比現今低約 120 m 時的古海平面地勢示意，用來觀察現今海面下可能露出的地形，不是未來情境。">
               <span class="scenario-value">−120 m</span><span class="scenario-name">末次冰盛期海平面<small>古海平面情境</small></span>
             </button>
           </div>
@@ -93,7 +93,7 @@
     <dialog id="aboutDialog" class="about-dialog">
       <button id="closeAbout" class="dialog-close" type="button" aria-label="關閉">×</button>
       <p class="eyebrow">關於模型</p>
-      <h2>這是一張地形門檻示意圖</h2>
+      <h2>海平面高度影響示意圖</h2>
       <p class="about-lead">本網站將數值高程模型（DEM）與使用者設定的海平面高度比較，<strong>不會自行計算氣候變遷，也不會預測未來海平面</strong>。IPCC 資料提供氣候評估背景；左側滑桿並不是與 SSP 情境連動的氣候模型輸出。</p>
 
       <section class="about-section">
@@ -127,7 +127,7 @@
       <section class="about-section">
         <h3>如何理解左側高度</h3>
         <ul>
-          <li><strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是地形觀察用概略值，不代表台灣各地的局部變化。</li>
+          <li><strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是觀察高度影響的概略值，不代表台灣各地的局部變化。</li>
           <li><strong>+5 m：</strong>對應 2°C 峰值升溫下、約 2,000 年海平面承諾上升 2–6 m 的長期範圍（低信心），不是 2100 年或特定 SSP 預測。AR6 另指出 SSP5-8.5 下 2150 年接近 5 m 的結果屬於不能排除的低信心高端結果，兩者不可混為同一項預測。</li>
           <li><strong>+7.4、+58、+66 m：</strong>冰蓋或全球陸地冰完全融化的全球平均海平面等效高度概估，不表示具體融化路徑或時間。</li>
           <li><strong>−120 m：</strong>末次冰盛期古海平面示意，不是未來情境。</li>
@@ -136,7 +136,7 @@
 
       <section class="about-section model-limitations">
         <h3>地圖模型與限制</h3>
-        <p>正值標示 DEM 高程高於現今海平面、但低於設定門檻的區域；負值標示現今海平面以下、可能曾曝露的區域。這些只是<strong>地形門檻示意，不等於實際淹水範圍</strong>。</p>
+        <p>正值標示 DEM 高程高於現今海平面、但低於設定高度的區域；負值標示現今海平面以下、可能曾曝露的區域。這些只是<strong>依地勢高度標示的可能影響區，不等於實際淹水範圍</strong>。</p>
         <p>模型未納入堤防、潮汐、風暴潮、河川、地下排水、水體連通性及地層升降。冰蓋完全融化的數值是全球平均海平面等效高度概估，不能直接解讀為台灣各地的局部海平面變化。因此結果<strong>不能作為防災、工程或不動產判斷依據</strong>。</p>
       </section>
 
@@ -156,6 +156,6 @@
     </dialog>
 
     <script src="vendor/leaflet/leaflet.js"></script>
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=4"></script>
   </body>
 </html>
