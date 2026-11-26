@@ -112,7 +112,16 @@ button { font: inherit; }
   box-shadow: 0 2px 8px rgba(18,44,56,.3);
 }
 .level-slider:focus-visible::-webkit-slider-thumb { outline: 3px solid rgba(8,127,156,.3); outline-offset: 2px; }
-.slider-scale { display: flex; justify-content: space-between; color: var(--muted); font: 600 9px/1 system-ui; }
+.slider-scale {
+  position: relative;
+  height: 10px;
+  color: var(--muted);
+  font: 600 9px/1 system-ui;
+}
+.slider-scale span { position: absolute; top: 0; white-space: nowrap; }
+.slider-scale span:first-child { left: 0; }
+.slider-scale span:nth-child(2) { left: 64.52%; transform: translateX(-50%); }
+.slider-scale span:last-child { right: 0; }
 
 .scenario-list { padding: 10px; }
 .scenario {
