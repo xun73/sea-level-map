@@ -6,7 +6,7 @@
 
 ## 啟動
 
-有網路連線時，可直接雙擊 `index.htm` 開啟。Leaflet 程式庫已包含在專案內；底圖與高程圖磚仍會由網路載入。
+有網路連線時，可直接雙擊 `index.html` 開啟。Leaflet 程式庫已包含在專案內；底圖與高程圖磚仍會由網路載入。
 
 若所使用的瀏覽器或公司安全政策禁止本機網頁連線外部圖磚，可改用本機 HTTP 伺服器：
 
@@ -29,4 +29,4 @@ python -m http.server 8000
 
 正值會標出 DEM 高程大於現今海平面且低於情境高度的像素；負值則標出海平面以下、情境海平面以上的像素。這是地形門檻示意，不會計算水體連通性，也未納入堤防、潮汐、風暴潮、河流、排水或地層下陷，不能作為防災或工程依據。
 
-資料來源：© OpenStreetMap contributors；Mapzen / AWS Terrain Tiles。
+資料來源：Tiles © Esri；Mapzen / AWS Terrain Tiles。

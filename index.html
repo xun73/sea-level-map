@@ -3,13 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="互動式全球海平面變化情境地圖" />
     <title>海平面變化地圖</title>
-    <meta http-equiv="refresh" content="0; url=index.htm" />
-    <script>
-      location.replace(`index.htm${location.search}${location.hash}`);
-    </script>
+    <link rel="preconnect" href="https://server.arcgisonline.com" />
+    <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" />
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <p>正在開啟<a href="index.htm">海平面變化地圖</a>…</p>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="海平面變化地圖首頁">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36"><path d="M6 23c4-4 8-4 12 0s8 4 12 0M6 16c4-4 8-4 12 0s8 4 12 0" /></svg>
+          </span>
+          <span><strong>海平面變化地圖</strong><small>SEA LEVEL EXPLORER</small></span>
+        </a>
+        <button id="aboutButton" class="about-button" type="button" aria-haspopup="dialog">關於模型</button>
+      </header>
+
+      <section class="map-stage" aria-label="互動式海平面地圖">
+        <div id="map"></div>
+
+        <aside class="control-panel" aria-label="海平面情境控制">
+          <div class="panel-heading">
+            <p class="eyebrow">情境模擬</p>
+            <div class="level-readout">
+              <span id="levelSign">+</span><strong id="levelValue">1</strong><span class="unit">m</span>
+            </div>
+            <p id="scenarioDescription" class="scenario-description">未來暖化情境探討</p>
+            <div class="level-slider-wrap">
+              <label for="levelSlider">自訂海平面高度</label>
+              <input
+                id="levelSlider"
+                class="level-slider"
+                type="range"
+                min="-120"
+                max="66"
+                step="0.1"
+                value="1"
+                aria-valuetext="海平面上升 1 公尺"
+              />
+              <div class="slider-scale" aria-hidden="true">
+                <span>−120 m</span><span>0</span><span>+66 m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scenario-list" role="radiogroup" aria-label="選擇海平面情境">
+            <button class="scenario active" type="button" role="radio" aria-checked="true" data-level="1" data-label="未來暖化情境探討">
+              <span class="scenario-value">+1 m</span><span class="scenario-name">未來暖化情境探討</span>
+            </button>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="5" data-label="長期海平面上升">
+              <span class="scenario-value">+5 m</span><span class="scenario-name">長期海平面上升</span>
+            </button>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="7.4" data-label="格陵蘭冰蓋完全融化">
+              <span class="scenario-value">+7.4 m</span><span class="scenario-name">格陵蘭冰蓋完全融化</span>
+            </button>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="58" data-label="南極洲冰蓋完全融化">
+              <span class="scenario-value">+58 m</span><span class="scenario-name">南極洲冰蓋完全融化</span>
+            </button>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="66" data-label="全球陸地冰完全融化的概略情境">
+              <span class="scenario-value">+66 m</span><span class="scenario-name">全球陸地冰完全融化</span>
+            </button>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="-120" data-label="末次冰盛期的海平面">
+              <span class="scenario-value">−120 m</span><span class="scenario-name">末次冰盛期</span>
+            </button>
+          </div>
+
+          <div class="legend" aria-label="圖例">
+            <span><i class="legend-swatch flood"></i><b id="legendLabel">可能淹沒區</b></span>
+            <span><i class="legend-swatch land"></i>現今陸地</span>
+          </div>
+        </aside>
+
+        <div class="status-card" aria-live="polite">
+          <span id="statusDot" class="status-dot"></span>
+          <span id="statusText">正在載入高程資料…</span>
+        </div>
+
+        <div class="coordinates" id="coordinates">25.03°N · 121.56°E</div>
+      </section>
+    </main>
+
+    <dialog id="aboutDialog" class="about-dialog">
+      <button id="closeAbout" class="dialog-close" type="button" aria-label="關閉">×</button>
+      <p class="eyebrow">關於模型</p>
+      <h2>這是一張地形門檻示意圖</h2>
+      <p>地圖將公開數值高程模型（DEM）與所選海平面比較。正值顯示高程低於門檻的陸地；負值顯示現今海平面下、可能曾曝露的區域。</p>
+      <p>結果未納入堤防、潮汐、風暴潮、河川、地下排水、地層下陷或水體連通性，因此<strong>不能作為防災、工程或不動產判斷依據</strong>。</p>
+      <dl>
+        <div><dt>底圖</dt><dd>Tiles © Esri</dd></div>
+        <div><dt>高程</dt><dd>Mapzen / AWS Terrain Tiles</dd></div>
+      </dl>
+    </dialog>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
