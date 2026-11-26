@@ -21,6 +21,7 @@ body {
 }
 
 button { font: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .app-shell { height: 100%; display: grid; grid-template-rows: 76px 1fr; }
 
@@ -39,6 +40,19 @@ button { font: inherit; }
 .brand-mark svg { width: 26px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
 .brand strong { display: block; font-size: 17px; letter-spacing: .05em; }
 .brand small { display: block; margin-top: 2px; color: var(--muted); font: 600 9px/1.2 system-ui; letter-spacing: .2em; }
+html[lang="en"] .brand strong { letter-spacing: 0; }
+.topbar-actions { display: flex; align-items: center; gap: 9px; }
+.language-picker select {
+  height: 37px;
+  padding: 0 30px 0 12px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  outline: none;
+  background: rgba(255,255,255,.4);
+  cursor: pointer;
+}
+.language-picker select:hover, .language-picker select:focus-visible { border-color: var(--blue); }
 
 .about-button {
   padding: 9px 15px;
@@ -211,7 +225,12 @@ button { font: inherit; }
   .app-shell { grid-template-rows: 64px 1fr; }
   .topbar { padding: 0 15px; }
   .brand-mark { width: 36px; height: 36px; }
-  .brand strong { font-size: 15px; }
+  .brand { gap: 8px; }
+  .brand strong { font-size: 13px; }
+  .brand small { font-size: 8px; letter-spacing: .13em; }
+  .topbar-actions { gap: 5px; }
+  .language-picker select { width: 62px; padding: 0 6px; font-size: 12px; }
+  .about-button { padding: 8px 10px; font-size: 12px; }
   .control-panel { top: auto; right: 10px; bottom: 10px; left: 10px; width: auto; max-height: 47%; border-radius: 15px; }
   .panel-heading { padding: 15px 18px 12px; }
   .level-readout strong { font-size: 42px; }
@@ -230,4 +249,6 @@ button { font: inherit; }
   .about-section { margin-top: 20px; padding-top: 18px; }
   .model-limitations { padding: 16px; }
   .dialog-close { top: -14px; margin-right: -6px; }
+  html[lang="en"] .scenario-list { grid-template-columns: 1fr; }
+  html[lang="en"] .scenario { grid-template-columns: 68px 1fr; }
 }
