@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://server.arcgisonline.com" />
     <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" />
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="styles.css?v=8" />
   </head>
   <body>
     <main class="app-shell">
@@ -48,14 +48,14 @@
                 id="levelSlider"
                 class="level-slider"
                 type="range"
-                min="-120"
+                min="-130"
                 max="66"
                 step="0.1"
                 value="1"
                 aria-valuetext="海平面上升 1 公尺"
               />
               <div class="slider-scale" aria-hidden="true">
-                <span>−120 m</span><span>0</span><span>+66 m</span>
+                <span>−130 m</span><span>0</span><span>+66 m</span>
               </div>
             </div>
           </div>
@@ -79,8 +79,8 @@
             <button class="scenario" type="button" role="radio" aria-checked="false" data-level="66" data-scenario="allIce">
               <span class="scenario-value">+66 m</span><span class="scenario-name">全球陸地冰完全融化<small>極端長期假想情境</small></span>
             </button>
-            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="-120" data-scenario="lgm">
-              <span class="scenario-value">−120 m</span><span class="scenario-name">末次冰盛期海平面<small>古海平面情境</small></span>
+            <button class="scenario" type="button" role="radio" aria-checked="false" data-level="-130" data-scenario="lgm">
+              <span class="scenario-value">−130 m</span><span class="scenario-name">末次冰盛期海平面<small>古海平面情境</small></span>
             </button>
           </div>
 
@@ -139,7 +139,7 @@
           <li data-i18n-html="understandOne"><strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是觀察高度影響的概略值，不代表臺灣各地的局部變化。</li>
           <li data-i18n-html="understandFive"><strong>+5 m：</strong>對應 2°C 峰值升溫下、約 2,000 年海平面承諾上升 2–6 m 的長期範圍（低信心程度），不是 2100 年或特定 SSP 推估。AR6 另指出 SSP5-8.5 下 2150 年接近 5 m 的結果屬於不能排除的低信心高端結果，兩者不可混為同一項推估。</li>
           <li data-i18n-html="understandIce"><strong>+7.4、+58、+66 m：</strong>冰原或全球陸地冰完全融化的全球平均海平面等效高度概估，不表示具體融化路徑或時間。</li>
-          <li data-i18n-html="understandLgm"><strong>−120 m：</strong>末次冰盛期古海平面示意，不是未來情境。</li>
+          <li data-i18n-html="understandLgm"><strong>−130 m：</strong>末次冰盛期古海平面示意，不是未來情境。</li>
         </ul>
       </section>
 
@@ -170,6 +170,6 @@
     </dialog>
 
     <script src="vendor/leaflet/leaflet.js"></script>
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=9"></script>
   </body>
 </html>

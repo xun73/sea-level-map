@@ -60,7 +60,7 @@ const I18N = {
     understandOne: "<strong>+1 m：</strong>接近 AR6 五種核心情境在 2100 年全球平均海平面可能範圍的高端，是觀察高度影響的概略值，不代表臺灣各地的局部變化。",
     understandFive: "<strong>+5 m：</strong>對應 2°C 峰值升溫下、約 2,000 年海平面承諾上升 2–6 m 的長期範圍（低信心程度），不是 2100 年或特定 SSP 推估。AR6 另指出 SSP5-8.5 下 2150 年接近 5 m 的結果屬於不能排除的低信心高端結果，兩者不可混為同一項推估。",
     understandIce: "<strong>+7.4、+58、+66 m：</strong>冰原或全球陸地冰完全融化的全球平均海平面等效高度概估，不表示具體融化路徑或時間。",
-    understandLgm: "<strong>−120 m：</strong>末次冰盛期古海平面示意，不是未來情境。",
+    understandLgm: "<strong>−130 m：</strong>末次冰盛期古海平面示意，不是未來情境。",
     limitationsTitle: "地圖模型與限制",
     limitationsOne: "正值標示 DEM 高程高於現今海平面、但低於設定高度的區域；負值標示現今海平面以下、可能曾曝露的區域。這些只是<strong>依地勢高度標示的可能影響區，不等於實際淹水範圍</strong>。",
     limitationsTwo: "模型未納入堤防、潮汐、風暴潮、河川、地下排水、水體連通性及地層升降。冰原完全融化的數值是全球平均海平面等效高度概估，不能直接解讀為臺灣各地的局部海平面變化。因此結果<strong>不能作為防災、工程或不動產判斷依據</strong>。",
@@ -125,7 +125,7 @@ const I18N = {
     understandOne: "<strong>+1 m:</strong> Near the upper end of the likely 2100 global mean sea-level range across the five core AR6 scenarios. It is a rounded height for exploring terrain, not a local projection for every part of Taiwan.",
     understandFive: "<strong>+5 m:</strong> A value within the 2–6 m committed global mean rise over about 2,000 years if warming peaks at about 2°C (low confidence). It is not a 2100 or scenario-specific projection. AR6 separately notes that a rise approaching 5 m by 2150 under SSP5-8.5 is a low-confidence high-end outcome that cannot be ruled out; these are not the same projection.",
     understandIce: "<strong>+7.4, +58, and +66 m:</strong> Approximate global mean sea-level equivalents for complete melting of ice sheets or all land ice. They do not specify a pathway or timescale.",
-    understandLgm: "<strong>−120 m:</strong> A Last Glacial Maximum palaeo-sea-level illustration, not a future scenario.",
+    understandLgm: "<strong>−130 m:</strong> A Last Glacial Maximum palaeo-sea-level illustration, not a future scenario.",
     limitationsTitle: "Map method and limitations",
     limitationsOne: "Positive values mark DEM cells above present sea level but below the selected height; negative values mark areas below present sea level that may have been exposed. These are <strong>potentially affected areas based only on elevation, not actual flood extents</strong>.",
     limitationsTwo: "The model does not include levees, tides, storm surge, rivers, drainage, hydrological connectivity, or vertical land movement. Complete-melt values are approximate global mean sea-level equivalents and cannot be read directly as local sea-level change around Taiwan. The results <strong>must not be used for emergency planning, engineering, or property decisions</strong>.",
@@ -146,7 +146,7 @@ const SCENARIO_TEXT = {
     greenland: { title: "格陵蘭冰原完全融化", type: "極端長期假想情境", description: "冰原完全融化後的全球平均海平面等效高度概估；不表示融化時間，也不是近期或本世紀的推估。" },
     antarctic: { title: "南極冰原完全融化", type: "極端長期假想情境", description: "冰原完全融化後的全球平均海平面等效高度概估，屬於極端長期假想情境，不是本世紀推估。" },
     allIce: { title: "全球陸地冰完全融化", type: "極端長期假想情境", description: "全球陸地冰完全融化後的海平面等效高度概估；不代表具體融化路徑、時間或推估結果。" },
-    lgm: { title: "末次冰盛期海平面", type: "古海平面情境", description: "海平面比現今低約 120 m 時的古海平面地勢示意，用來觀察現今海面下可能露出的地形，不是未來情境。" },
+    lgm: { title: "末次冰盛期海平面", type: "古海平面情境", description: "海平面比現今低約 130 m 時的古海平面地勢示意，用來觀察現今海面下可能露出的地形，不是未來情境。" },
   },
   en: {
     current: { title: "Present-day sea level", type: "Baseline", description: "Present-day sea-level baseline; no rise or fall scenario is applied." },
@@ -155,7 +155,7 @@ const SCENARIO_TEXT = {
     greenland: { title: "Complete Greenland melt", type: "Extreme long-term hypothetical", description: "An approximate global mean sea-level equivalent if the Greenland Ice Sheet melted completely. It gives no melting timescale and is not a near-term or end-of-century projection." },
     antarctic: { title: "Complete Antarctic melt", type: "Extreme long-term hypothetical", description: "An approximate global mean sea-level equivalent if the Antarctic Ice Sheet melted completely. This is an extreme long-term hypothetical scenario, not an end-of-century projection." },
     allIce: { title: "Complete melt of all land ice", type: "Extreme long-term hypothetical", description: "An approximate sea-level equivalent if all land ice melted completely; it does not represent a specific pathway, timescale, or projection." },
-    lgm: { title: "Last Glacial Maximum", type: "Palaeo-sea-level scenario", description: "An illustration of terrain when sea level was about 120 m below today, showing areas of the present seafloor that may have been exposed. This is not a future scenario." },
+    lgm: { title: "Last Glacial Maximum", type: "Palaeo-sea-level scenario", description: "An illustration of terrain when sea level was about 130 m below today, showing areas of the present seafloor that may have been exposed. This is not a future scenario." },
   },
 };
 

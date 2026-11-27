@@ -115,7 +115,7 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
   margin: 8px 0;
   border-radius: 999px;
   outline: none;
-  background: linear-gradient(to right, var(--sand) 0%, var(--sand) 64.52%, var(--blue) 64.52%, var(--blue) 100%);
+  background: linear-gradient(to right, var(--sand) 0%, var(--sand) 66.33%, var(--blue) 66.33%, var(--blue) 100%);
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
@@ -147,7 +147,7 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
 }
 .slider-scale span { position: absolute; top: 0; white-space: nowrap; }
 .slider-scale span:first-child { left: 0; }
-.slider-scale span:nth-child(2) { left: 64.52%; transform: translateX(-50%); }
+.slider-scale span:nth-child(2) { left: 66.33%; transform: translateX(-50%); }
 .slider-scale span:last-child { right: 0; }
 
 .scenario-list { padding: 10px; }
