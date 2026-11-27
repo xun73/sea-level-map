@@ -12,9 +12,22 @@
 
 不需下載或安裝，使用電腦或手機瀏覽器即可進入。線上版本使用 OpenStreetMap 底圖。
 
-## 本機啟動
+## 下載單機版
 
-有網路連線時，可直接雙擊 `index.html` 開啟。Leaflet 程式庫已包含在專案內；底圖與高程圖磚仍會由網路載入。網站版本使用 OpenStreetMap；直接開啟本機檔案時，為避免 OpenStreetMap 的 `file://` 存取限制，會自動改用 Esri 備援底圖。
+**[下載最新版單機版 ZIP](https://github.com/xun73/sea-level-map/releases/latest/download/sea-level-map-standalone.zip)**
+
+也可以前往 [Releases 頁面](https://github.com/xun73/sea-level-map/releases/latest)，展開 **Assets** 後下載 `sea-level-map-standalone.zip`。
+
+### 使用方式
+
+1. 下載 `sea-level-map-standalone.zip`。
+2. 將 ZIP **完整解壓縮**，不要直接在壓縮檔內開啟網頁。
+3. 保留 `index.html`、`app.js`、`styles.css` 與 `vendor` 資料夾的相對位置。
+4. 在有網路連線時雙擊 `index.html`，即可使用瀏覽器開啟地圖。
+
+單機版不需安裝 Python、Node.js 或網頁伺服器。Leaflet 程式庫已包含在下載檔內，但底圖與高程圖磚仍需由網路載入，因此不是完全離線版本。線上網站使用 OpenStreetMap；直接開啟本機檔案時，為避免 OpenStreetMap 的 `file://` 存取限制，會自動改用 Esri 備援底圖。
+
+### 無法直接開啟時
 
 若所使用的瀏覽器或公司安全政策禁止本機網頁連線外部圖磚，可改用本機 HTTP 伺服器：
 
