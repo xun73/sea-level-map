@@ -89,6 +89,7 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
 }
+.panel-toggle { display: none; }
 
 .panel-heading { padding: 24px 24px 18px; border-bottom: 1px solid var(--line); }
 .eyebrow { margin: 0 0 8px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .18em; }
@@ -239,8 +240,16 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
   .topbar-actions { gap: 5px; }
   .language-picker select { width: 62px; padding: 0 6px; font-size: 12px; }
   .about-button { padding: 8px 10px; font-size: 12px; }
-  .control-panel { top: auto; right: 10px; bottom: 10px; left: 10px; width: auto; max-height: 47%; border-radius: 15px; }
+  .control-panel { top: auto; right: 10px; bottom: 10px; left: 10px; width: auto; max-height: 62dvh; border-radius: 15px; transition: max-height .18s ease; }
   .panel-heading { padding: 15px 18px 12px; }
+  .panel-toggle { position: absolute; z-index: 2; top: 11px; right: 12px; display: flex; align-items: center; gap: 4px; min-height: 34px; padding: 6px 10px; color: var(--deep-blue); border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.86); font-size: 10px; font-weight: 700; cursor: pointer; }
+  .panel-toggle-icon { display: inline-block; font-size: 15px; line-height: 1; transition: transform .18s ease; }
+  .control-panel.is-compact { max-height: 185px; overflow: hidden; }
+  .control-panel.is-compact .panel-heading { padding-bottom: 15px; border-bottom: 0; }
+  .control-panel.is-compact .scenario-description,
+  .control-panel.is-compact .scenario-list,
+  .control-panel.is-compact .legend { display: none; }
+  .control-panel.is-compact .panel-toggle-icon { transform: rotate(180deg); }
   .level-readout strong { font-size: 42px; }
   .level-slider-wrap { margin-top: 10px; }
   .scenario-list { display: grid; grid-template-columns: 1fr 1fr; }

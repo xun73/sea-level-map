@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://server.arcgisonline.com" />
     <link rel="preconnect" href="https://elevation-tiles-prod.s3.amazonaws.com" />
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
   </head>
   <body>
     <main class="app-shell">
@@ -36,6 +36,9 @@
         <div id="map"></div>
 
         <aside class="control-panel" aria-label="海平面情境控制" data-i18n-aria="controlsAria">
+          <button id="panelToggle" class="panel-toggle" type="button" aria-expanded="true">
+            <span id="panelToggleText">收合</span><span class="panel-toggle-icon" aria-hidden="true">⌄</span>
+          </button>
           <div class="panel-heading">
             <p class="eyebrow" data-i18n="controlsTitle">海平面高度／情境</p>
             <div class="level-readout">
@@ -170,6 +173,6 @@
     </dialog>
 
     <script src="vendor/leaflet/leaflet.js"></script>
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=10"></script>
   </body>
 </html>

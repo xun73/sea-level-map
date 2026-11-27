@@ -16,6 +16,8 @@ const I18N = {
     mapAria: "互動式海平面地圖",
     controlsAria: "海平面情境控制",
     controlsTitle: "海平面高度／情境",
+    panelExpand: "展開選項",
+    panelCollapse: "收合選項",
     zoomIn: "放大",
     zoomOut: "縮小",
     mapLayers: "選擇底圖",
@@ -81,6 +83,8 @@ const I18N = {
     mapAria: "Interactive sea-level map",
     controlsAria: "Sea-level scenario controls",
     controlsTitle: "SEA LEVEL / SCENARIO",
+    panelExpand: "Expand controls",
+    panelCollapse: "Collapse controls",
     zoomIn: "Zoom in",
     zoomOut: "Zoom out",
     mapLayers: "Choose a base map",
@@ -311,6 +315,7 @@ function applyLanguage(language, persist = true) {
   updateBaseMapCredit();
   rebuildLayerControl();
   document.getElementById("languageSelect").value = currentLanguage;
+  updatePanelToggleLabel();
   const zoomIn = document.querySelector(".leaflet-control-zoom-in");
   const zoomOut = document.querySelector(".leaflet-control-zoom-out");
   if (zoomIn) {
@@ -517,5 +522,28 @@ dialog.addEventListener("click", (event) => {
 document.getElementById("languageSelect").addEventListener("change", (event) => {
   applyLanguage(event.target.value);
 });
+
+const panelToggle = document.getElementById("panelToggle");
+const controlPanel = document.querySelector(".control-panel");
+const narrowScreen = window.matchMedia("(max-width: 680px)");
+let panelExpanded = !narrowScreen.matches;
+
+function updatePanelToggleLabel() {
+  const label = panelExpanded ? text("panelCollapse") : text("panelExpand");
+  document.getElementById("panelToggleText").textContent = label;
+  panelToggle.setAttribute("aria-label", label);
+  panelToggle.setAttribute("aria-expanded", String(panelExpanded));
+}
+
+function setPanelExpanded(expanded) {
+  panelExpanded = narrowScreen.matches ? expanded : true;
+  controlPanel.classList.toggle("is-compact", !panelExpanded);
+  updatePanelToggleLabel();
+  setTimeout(() => map.invalidateSize(), 180);
+}
+
+panelToggle.addEventListener("click", () => setPanelExpanded(!panelExpanded));
+narrowScreen.addEventListener("change", ({ matches }) => setPanelExpanded(!matches));
+setPanelExpanded(!narrowScreen.matches);
 
 applyLanguage(currentLanguage, false);
