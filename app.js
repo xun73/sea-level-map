@@ -18,6 +18,11 @@ const I18N = {
     controlsTitle: "海平面高度／情境",
     zoomIn: "放大",
     zoomOut: "縮小",
+    mapLayers: "選擇底圖",
+    osmLayer: "OpenStreetMap 標準地圖",
+    streetLayer: "Esri 街道圖",
+    topoLayer: "Esri 地形圖",
+    imageryLayer: "Esri 衛星影像",
     sliderLabel: "自訂高度（非氣候推估）",
     scenarioGroupAria: "選擇海平面情境",
     legendAria: "圖例",
@@ -62,8 +67,8 @@ const I18N = {
     sourcesTitle: "評估資料來源",
     baseMap: "底圖",
     elevation: "高程",
-    localBaseMapCredit: "Tiles © Esri（本機備援底圖）",
-    onlineBaseMapCredit: "© OpenStreetMap contributors",
+    osmCredit: "© OpenStreetMap contributors",
+    esriCredit: "Tiles © Esri",
     creatorAria: "製作者資訊",
   },
   en: {
@@ -78,6 +83,11 @@ const I18N = {
     controlsTitle: "SEA LEVEL / SCENARIO",
     zoomIn: "Zoom in",
     zoomOut: "Zoom out",
+    mapLayers: "Choose a base map",
+    osmLayer: "OpenStreetMap Standard",
+    streetLayer: "Esri Street Map",
+    topoLayer: "Esri Topographic Map",
+    imageryLayer: "Esri Satellite Imagery",
     sliderLabel: "Custom height (not a climate projection)",
     scenarioGroupAria: "Select a sea-level scenario",
     legendAria: "Legend",
@@ -122,8 +132,8 @@ const I18N = {
     sourcesTitle: "Assessment sources",
     baseMap: "Base map",
     elevation: "Elevation",
-    localBaseMapCredit: "Tiles © Esri (local-file fallback)",
-    onlineBaseMapCredit: "© OpenStreetMap contributors",
+    osmCredit: "© OpenStreetMap contributors",
+    esriCredit: "Tiles © Esri",
     creatorAria: "Creator information",
   },
 };
@@ -177,24 +187,78 @@ const map = L.map("map", {
 L.control.zoom({ position: "topright" }).addTo(map);
 
 const isLocalFile = window.location.protocol === "file:";
-const baseMap = isLocalFile
-  ? {
-      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
-      attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
-      credit: "Tiles © Esri（本機備援底圖）",
-    }
-  : {
-      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      credit: "© OpenStreetMap contributors",
-    };
+const BASE_MAP_CONFIGS = {
+  osm: {
+    nameKey: "osmLayer",
+    creditKey: "osmCredit",
+    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  },
+  street: {
+    nameKey: "streetLayer",
+    creditKey: "esriCredit",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+  },
+  topo: {
+    nameKey: "topoLayer",
+    creditKey: "esriCredit",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+  },
+  imagery: {
+    nameKey: "imageryLayer",
+    creditKey: "esriCredit",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+  },
+};
 
-L.tileLayer(baseMap.url, {
-  maxZoom: 19,
-  attribution: baseMap.attribution,
-}).addTo(map);
+const availableBaseMapKeys = isLocalFile
+  ? ["street", "topo", "imagery"]
+  : ["osm", "street", "topo", "imagery"];
+const baseMapLayers = Object.fromEntries(
+  availableBaseMapKeys.map((key) => [
+    key,
+    L.tileLayer(BASE_MAP_CONFIGS[key].url, {
+      maxZoom: 19,
+      attribution: BASE_MAP_CONFIGS[key].attribution,
+    }),
+  ]),
+);
+let activeBaseMapKey = isLocalFile ? "street" : "osm";
+let layerControl = null;
 
-document.getElementById("baseMapCredit").textContent = baseMap.credit;
+baseMapLayers[activeBaseMapKey].addTo(map);
+
+function updateBaseMapCredit() {
+  document.getElementById("baseMapCredit").textContent = text(BASE_MAP_CONFIGS[activeBaseMapKey].creditKey);
+}
+
+function rebuildLayerControl() {
+  if (layerControl) map.removeControl(layerControl);
+  const localizedLayers = {};
+  availableBaseMapKeys.forEach((key) => {
+    localizedLayers[text(BASE_MAP_CONFIGS[key].nameKey)] = baseMapLayers[key];
+  });
+  layerControl = L.control.layers(localizedLayers, null, {
+    position: "topright",
+    collapsed: true,
+  }).addTo(map);
+  const toggle = layerControl.getContainer().querySelector(".leaflet-control-layers-toggle");
+  if (toggle) {
+    toggle.title = text("mapLayers");
+    toggle.setAttribute("aria-label", text("mapLayers"));
+  }
+}
+
+map.on("baselayerchange", ({ layer }) => {
+  const selected = availableBaseMapKeys.find((key) => baseMapLayers[key] === layer);
+  if (selected) {
+    activeBaseMapKey = selected;
+    updateBaseMapCredit();
+  }
+});
 
 function scenarioText(button) {
   return SCENARIO_TEXT[currentLanguage][button.dataset.scenario];
@@ -240,9 +304,8 @@ function applyLanguage(language, persist = true) {
   document.getElementById("legendLabel").textContent = state.level < 0
     ? text("possibleExposure")
     : text("possibleFlood");
-  document.getElementById("baseMapCredit").textContent = isLocalFile
-    ? text("localBaseMapCredit")
-    : text("onlineBaseMapCredit");
+  updateBaseMapCredit();
+  rebuildLayerControl();
   document.getElementById("languageSelect").value = currentLanguage;
   const zoomIn = document.querySelector(".leaflet-control-zoom-in");
   const zoomOut = document.querySelector(".leaflet-control-zoom-out");

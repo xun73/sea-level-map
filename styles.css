@@ -70,6 +70,10 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
 .leaflet-control-attribution { font-size: 10px; }
 .leaflet-control-zoom { margin-top: 20px !important; margin-right: 20px !important; border: 0 !important; box-shadow: var(--shadow) !important; }
 .leaflet-control-zoom a { color: var(--ink) !important; background: rgba(255,255,255,.94) !important; }
+.leaflet-control-layers { margin-right: 20px !important; border: 0 !important; border-radius: 8px !important; box-shadow: var(--shadow) !important; }
+.leaflet-control-layers-toggle { width: 34px !important; height: 34px !important; }
+.leaflet-control-layers-expanded { padding: 10px 13px !important; color: var(--ink); background: rgba(255,255,255,.96) !important; font-size: 12px; }
+.leaflet-control-layers label { margin: 5px 0; }
 
 .control-panel {
   position: absolute;
@@ -247,6 +251,7 @@ html[lang="en"] .brand strong { letter-spacing: 0; }
   .status-card { top: 12px; bottom: auto; }
   .coordinates { display: none; }
   .leaflet-control-zoom { margin-top: 58px !important; margin-right: 12px !important; }
+  .leaflet-control-layers { margin-right: 12px !important; }
   .about-dialog { width: calc(100% - 20px); max-height: 92dvh; padding: 22px 18px; border-radius: 14px; }
   .about-dialog h2 { font-size: 25px; }
   .about-lead { font-size: 14px; }

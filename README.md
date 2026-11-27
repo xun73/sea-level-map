@@ -25,7 +25,16 @@
 3. 保留 `index.html`、`app.js`、`styles.css` 與 `vendor` 資料夾的相對位置。
 4. 在有網路連線時雙擊 `index.html`，即可使用瀏覽器開啟地圖。
 
-單機版不需安裝 Python、Node.js 或網頁伺服器。Leaflet 程式庫已包含在下載檔內，但底圖與高程圖磚仍需由網路載入，因此不是完全離線版本。線上網站使用 OpenStreetMap；直接開啟本機檔案時，為避免 OpenStreetMap 的 `file://` 存取限制，會自動改用 Esri 備援底圖。
+單機版不需安裝 Python、Node.js 或網頁伺服器。Leaflet 程式庫已包含在下載檔內，但底圖與高程圖磚仍需由網路載入，因此不是完全離線版本。
+
+### 底圖選擇
+
+地圖右上角的圖層按鈕可切換底圖：
+
+- **GitHub 線上版：**OpenStreetMap 標準地圖（預設）、Esri 街道圖、Esri 地形圖、Esri 衛星影像。
+- **單機版：**Esri 街道圖（預設）、Esri 地形圖、Esri 衛星影像。
+
+單機版不列出 OpenStreetMap，是因為 OpenStreetMap 官方圖磚會限制從 `file://` 本機頁面直接存取；線上版則保留 OpenStreetMap 為預設底圖。
 
 ### 無法直接開啟時
 
