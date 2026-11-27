@@ -184,6 +184,10 @@ const map = L.map("map", {
   worldCopyJump: true,
 });
 
+map.createPane("elevationPane");
+map.getPane("elevationPane").style.zIndex = 350;
+map.getPane("elevationPane").style.pointerEvents = "none";
+
 L.control.zoom({ position: "topright" }).addTo(map);
 
 const isLocalFile = window.location.protocol === "file:";
@@ -406,6 +410,7 @@ function paintElevationMask(data, level) {
 let elevationLayer = new ElevationLayer({
   tileSize: TILE_SIZE,
   opacity: 0.92,
+  pane: "elevationPane",
   generation: state.generation,
   attribution: ELEVATION_ATTRIBUTION,
 }).addTo(map);
@@ -419,6 +424,7 @@ function updateLayer() {
   elevationLayer = new ElevationLayer({
     tileSize: TILE_SIZE,
     opacity: 0.92,
+    pane: "elevationPane",
     generation: state.generation,
     attribution: ELEVATION_ATTRIBUTION,
   }).addTo(map);
